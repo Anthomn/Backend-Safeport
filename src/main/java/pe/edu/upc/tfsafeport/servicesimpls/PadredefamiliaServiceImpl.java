@@ -22,4 +22,6 @@ public class PadredefamiliaServiceImpl implements IPadredefamiliaService {
     public List<Padredefamilia> list() {
         return pR.findAll();
     }
+
+
 }
