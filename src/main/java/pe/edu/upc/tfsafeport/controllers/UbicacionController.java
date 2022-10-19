@@ -20,4 +20,20 @@ public class UbicacionController {
 
     @GetMapping
     public List<Ubicacion> listar() {return uService.list();}
+
+    @DeleteMapping
+    public void eliminate(@PathVariable("id") Integer id){
+        uService.delete(id);
+    }
+    @PutMapping
+    public void modificar(@RequestBody Ubicacion ubicacion){
+        uService.insert(ubicacion);
+    }
+    @PostMapping("/buscar")
+    public List<Ubicacion> buscar(@RequestBody Ubicacion propietario){
+        List<Ubicacion> lista;
+        propietario.setDistrito(propietario.getDistrito());
+        lista=uService.search(propietario.getDistrito());
+        return lista;
+    }
 }
