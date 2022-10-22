@@ -7,6 +7,8 @@ import pe.edu.upc.tfsafeport.repositories.IPadredefamiliaRepository;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IPadredefamiliaService;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class PadredefamiliaServiceImpl implements IPadredefamiliaService {
 
@@ -23,5 +25,19 @@ public class PadredefamiliaServiceImpl implements IPadredefamiliaService {
         return pR.findAll();
     }
 
+    @Override
+    public void delete(int Id) {
+        pR.deleteById(Id);
+    }
+
+    @Override
+    public Optional<Padredefamilia> listarId(int Id) {
+        return Optional.of(pR.findById(Id).orElse(new Padredefamilia()));
+    }
+
+    @Override
+    public List<Padredefamilia> search(String nombre) {
+        return pR.search(nombre);
+    }
 
 }
