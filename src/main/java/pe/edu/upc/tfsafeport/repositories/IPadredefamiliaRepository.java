@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface IPadredefamiliaRepository extends JpaRepository<Padredefamilia, Integer> {
     @Query("from Padredefamilia p where p.nombre like %:nombre")
-    List<Padredefamilia> search(@Param("namePropietario")String nombre);
+    List<Padredefamilia> search(@Param("nombre")String nombre);
 }

@@ -19,4 +19,22 @@ public class PadredefamiliaController {
 
     @GetMapping
     public List<Padredefamilia> listar() {return pService.list();}
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Integer id){
+        pService.delete(id);
+    }
+    @PutMapping
+    public void modificar(@RequestBody Padredefamilia padredefamilia){
+        pService.insert(padredefamilia);
+    }
+
+    @PostMapping("/buscar")
+    public List<Padredefamilia> buscar(@RequestBody Padredefamilia padredefamilia)
+    {
+        List<Padredefamilia> lista;
+        padredefamilia.setNombre(padredefamilia.getNombre());
+        lista=pService.search(padredefamilia.getNombre());
+        return lista;
+    }
 }
