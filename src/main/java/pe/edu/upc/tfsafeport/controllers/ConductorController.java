@@ -21,4 +21,23 @@ public class ConductorController {
 
     @GetMapping
     public List<Conductor> listar() {return cService.list();}
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Integer id){
+        cService.delete(id);
+    }
+    @PutMapping
+    public void modificar(@RequestBody Conductor conductor){
+        cService.insert(conductor);
+    }
+
+    @PostMapping("/buscar")
+    public List<Conductor> buscar(@RequestBody Conductor conductor)
+    {
+        List<Conductor> lista;
+        conductor.setNombre(conductor.getNombre());
+        lista=cService.search(conductor.getNombre());
+        return lista;
+    }
+
 }

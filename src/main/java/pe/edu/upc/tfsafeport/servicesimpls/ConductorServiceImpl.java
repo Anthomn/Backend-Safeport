@@ -7,6 +7,8 @@ import pe.edu.upc.tfsafeport.repositories.IConductorRepository;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IConductorService;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ConductorServiceImpl implements IConductorService {
     @Autowired
@@ -20,5 +22,18 @@ public class ConductorServiceImpl implements IConductorService {
     @Override
     public List<Conductor> list() {
         return cR.findAll();
+    }
+
+    @Override
+    public void delete(int id){
+        cR.deleteById(id);
+    }
+
+    @Override
+     public Optional<Conductor> listarId(int id){
+         return Optional.of(cR.findById(id).orElse(new Conductor()));
+     }
+    @Override
+    public List<Conductor> search(String nombre){return cR.search(nombre);
     }
 }
