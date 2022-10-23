@@ -30,7 +30,6 @@ public class ConductorController {
     public void modificar(@RequestBody Conductor conductor){
         cService.insert(conductor);
     }
-
     @PostMapping("/buscar")
     public List<Conductor> buscar(@RequestBody Conductor conductor)
     {
