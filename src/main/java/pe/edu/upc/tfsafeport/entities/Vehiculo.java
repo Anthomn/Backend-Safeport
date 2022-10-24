@@ -13,7 +13,7 @@ public class Vehiculo {
     private String placa;
     @Column(name = "color", length = 20, nullable = false)
     private String color;
-    @Column(name = "estado", length = 1, nullable = false)
+    @Column(name = "estado", length = 20, nullable = false)
     private String estado;
     @Column(name = "marca", length = 20, nullable = false)
     private String marca;
