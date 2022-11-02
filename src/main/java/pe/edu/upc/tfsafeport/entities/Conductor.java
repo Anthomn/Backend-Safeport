@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Conductor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private int idConductor;
 
     @Column(name = "nombre", length = 50, nullable = false)
     private String nombre;
@@ -36,7 +36,7 @@ public class Conductor {
     }
 
     public Conductor(int id, String nombre, String apellido, int dni, String genero, int edad, int tiempoconduccion, String direccion, String verificado) {
-        Id = id;
+        this.idConductor = idConductor;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -47,12 +47,12 @@ public class Conductor {
         this.verificado = verificado;
     }
 
-    public int getId() {
-        return Id;
+    public int getIdConductor() {
+        return idConductor;
     }
 
-    public void setId(int id) {
-        Id = id;
+    public void setIdConductor(int idConductor) {
+        this.idConductor = idConductor;
     }
 
     public String getNombre() {

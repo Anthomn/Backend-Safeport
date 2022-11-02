@@ -21,7 +21,7 @@ public class UbicacionController {
     @GetMapping
     public List<Ubicacion> listar() {return uService.list();}
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void eliminate(@PathVariable("id") Integer id){
         uService.delete(id);
     }

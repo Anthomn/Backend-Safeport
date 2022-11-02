@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pe.edu.upc.tfsafeport.entities.Vehiculo;
 import pe.edu.upc.tfsafeport.repositories.IVehiculoRepository;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IVehiculoService;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,8 +18,14 @@ import java.util.Optional;
         private IVehiculoRepository uR;
 
         @Override
-        public void insert(Vehiculo vehiculo) {
-            uR.save(vehiculo);
+        @Transactional
+        public boolean insert(Vehiculo vehiculo) {
+            Vehiculo objVehiculo = uR.save(vehiculo);
+            if (objVehiculo == null) {
+                return false;
+            } else {
+                return true;
+            }
         }
 
         @Override
@@ -26,15 +34,23 @@ import java.util.Optional;
         }
         @Override
         public Optional<Vehiculo> ListarId(int id) {
-            return Optional.of(uR.findById(id).orElse(new Vehiculo()));
+
+            return uR.findById(id);
+
         }
 
         @Override
+        @Transactional
         public void delete(int id){uR.deleteById(id);}
 
         @Override
         public List<Vehiculo> search(String placa) {
             return uR.search(placa);
+        }
+
+        @Override
+        public List<Vehiculo> searchConductor(String nombre) {
+            return uR.searchConductor(nombre);
         }
     }
 

@@ -1,11 +1,15 @@
 package pe.edu.upc.tfsafeport.entities;
 
 import javax.persistence.*;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.io.Serializable;
 
 @Entity
 @Table (name = "Vehiculo")
-public class Vehiculo {
+public class Vehiculo implements Serializable {
 
+    private static final long serialVersionUID =1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
@@ -13,7 +17,7 @@ public class Vehiculo {
     private String placa;
     @Column(name = "color", length = 20, nullable = false)
     private String color;
-    @Column(name = "estado", length = 1, nullable = false)
+    @Column(name = "estado", length = 20, nullable = false)
     private String estado;
     @Column(name = "marca", length = 20, nullable = false)
     private String marca;
@@ -23,10 +27,14 @@ public class Vehiculo {
     @Column(name = "aniomodelo", length = 5,nullable = false)
     private String aniomodelo;
 
+    @ManyToOne
+    @JoinColumn(name = "idConductor", nullable = false)
+    private Conductor conductor;
 
-
-    public Vehiculo (){}
-    public Vehiculo(int id, String placa, String color, String estado, String marca, String caracteristica) {
+    public Vehiculo (){
+        super();
+    }
+    public Vehiculo(int id, String placa, String color, String estado, String marca, String caracteristica, Conductor conductor) {
         Id = id;
         this.placa = placa;
         this.color = color;
@@ -34,7 +42,7 @@ public class Vehiculo {
         this.marca = marca;
         this.caracteristica = caracteristica;
         this.aniomodelo= aniomodelo;
-
+        this.conductor = conductor;
     }
 
     public String getCaracteristica() {
@@ -77,10 +85,18 @@ public class Vehiculo {
         this.color = color;
     }
 
+
+
+    public Conductor getConductor() {
+        return conductor;
+    }
+
+    public void setConductor(Conductor conductor) {
+        this.conductor = conductor;
+    }
     public int getId() {
         return Id;
     }
-
     public void setId(int id) {
         Id = id;
     }
