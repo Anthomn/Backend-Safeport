@@ -35,7 +35,7 @@ public class ViajeServiceImpl implements IViajeService {
         return Optional.of(vj.findById(idViaje).orElse(new Viaje()));
         //return Optional.empty();
     }
-
+    //prueba de merge
     @Override
     public List<Viaje> search(String horainicio) {
         return vj.search(horainicio);
