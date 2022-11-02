@@ -31,7 +31,10 @@ public class EstadoServiceImpl implements IEstadoService {
 
     @Override
     public Optional<Estado> listarId(int idEstado) {
+
         return Optional.of(eR.findById(idEstado).orElse(new Estado()));
+        /*
+        return Optional.empty();*/
     }
 
     @Override
