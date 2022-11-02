@@ -5,7 +5,9 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfsafeport.entities.Vehiculo;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IVehiculoService;
 
+import java.text.ParseException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/vehiculos")
@@ -30,11 +32,27 @@ public class VehiculoController {
         vService.insert(vehiculo);
     }
     @PostMapping("/buscar")
+    public List<Vehiculo> buscar(@RequestBody Vehiculo vehiculo) throws ParseException {
+        List<Vehiculo> listaVehiculo;
+        listaVehiculo=vService.search(vehiculo.getPlaca());
+        if (listaVehiculo.isEmpty()){
+            listaVehiculo = vService.searchConductor(vehiculo.getConductor().getNombre());
+        }
+        return listaVehiculo;
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Vehiculo> ListarId(@PathVariable("id") Integer id){
+        return vService.ListarId(id);
+    }
+
+    /*
+    DASTODOELOBJETO
     public List<Vehiculo> buscar(@RequestBody Vehiculo vehiculo){
         List<Vehiculo> lista;
         vehiculo.setPlaca(vehiculo.getPlaca());
         lista=vService.search(vehiculo.getPlaca());
         return lista;
-    }
+    }*/
 }
 

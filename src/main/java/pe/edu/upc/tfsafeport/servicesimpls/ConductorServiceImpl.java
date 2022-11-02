@@ -30,8 +30,8 @@ public class ConductorServiceImpl implements IConductorService {
     }
 
     @Override
-     public Optional<Conductor> listarId(int id){
-         return Optional.of(cR.findById(id).orElse(new Conductor()));
+     public Optional<Conductor> listarId(int idConductor){
+         return Optional.of(cR.findById(idConductor).orElse(new Conductor()));
      }
     @Override
     public List<Conductor> search(String nombre){return cR.search(nombre);
