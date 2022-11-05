@@ -6,6 +6,8 @@ import javax.persistence.*;
 @Entity
 @Table(name ="Viaje")
 public class Viaje {
+
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idViaje;
@@ -18,6 +20,18 @@ public class Viaje {
 
     @Column(name = "horafin", length = 25, nullable = false)
     private String horafin;
+
+    @ManyToOne
+    @JoinColumn(name ="idVehiculo",nullable = false)
+    private Vehiculo vehiculo;
+
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
 
     public Viaje() {
     }
