@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfsafeport.entities.Viaje;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IViajeService;
 
+import java.text.ParseException;
+import java.util.Optional;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/viaje")
@@ -29,12 +32,20 @@ public class ViajeController {
     public void modificar(@RequestBody Viaje viaje){vService.Insert(viaje);}
 
     @PostMapping("/buscar")
-    public List<Viaje> buscar(@RequestBody Viaje viaje)
+    public List<Viaje> search(@RequestBody Viaje viaje)
     {
         List<Viaje> lista;
         viaje.setHorainicio(viaje.getHorainicio());
         lista=vService.search(viaje.getHorainicio());
+        if (lista.isEmpty()) {
+
+            lista = vService.buscarVehiculo(viaje.getVehiculo().getPlaca());
+        }
         return lista;
+    }
+    @GetMapping("/{id}")
+    public Optional<Viaje> listarId(@PathVariable("id") Integer id) {
+        return vService.listarId(id);
     }
 
 }
