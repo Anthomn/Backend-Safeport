@@ -2,12 +2,13 @@ package pe.edu.upc.tfsafeport.servicesinterfaces;
 
 import pe.edu.upc.tfsafeport.entities.Viaje;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 public interface IViajeService {
 
-    public void Insert(Viaje viaje);
+    public boolean Insert(Viaje viaje);
 
     List<Viaje>list();
 
@@ -15,5 +16,7 @@ public interface IViajeService {
 
     public Optional<Viaje>listarId(int idViaje);
 
-    List<Viaje>search(String horainicio);
+    List<Viaje> buscarVehiculo(String fecha);
+    List<Viaje> search(String horainicio);
+
 }

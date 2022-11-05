@@ -2,9 +2,11 @@ package pe.edu.upc.tfsafeport.servicesimpls;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upc.tfsafeport.entities.Viaje;
 import pe.edu.upc.tfsafeport.repositories.IViajeRepository;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IViajeService;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -16,8 +18,14 @@ public class ViajeServiceImpl implements IViajeService {
     private IViajeRepository vj;
 
     @Override
-    public void Insert(Viaje viaje) {
-        vj.save(viaje);
+    @Transactional
+    public boolean Insert(Viaje vehiculo) {
+        Viaje objVehiculo = vj.save(vehiculo);
+        if (objVehiculo == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     @Override
@@ -26,16 +34,23 @@ public class ViajeServiceImpl implements IViajeService {
     }
 
     @Override
+    @Transactional
     public void delete(int idViaje) {
+
         vj.deleteById(idViaje);
+
     }
 
     @Override
     public Optional<Viaje> listarId(int idViaje) {
-        return Optional.of(vj.findById(idViaje).orElse(new Viaje()));
-        //return Optional.empty();
+
+        return vj.findById(idViaje);
     }
     //prueba de merge
+    @Override
+    public List<Viaje> buscarVehiculo(String fecha) {
+        return vj.buscarVehiculo(fecha);
+    }
     @Override
     public List<Viaje> search(String horainicio) {
         return vj.search(horainicio);
