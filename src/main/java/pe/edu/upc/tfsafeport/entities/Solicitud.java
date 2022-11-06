@@ -1,6 +1,10 @@
 package pe.edu.upc.tfsafeport.entities;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Solicitud")
@@ -13,17 +17,20 @@ public class Solicitud {
     @Column(name = "precio", length = 10, nullable = false)
     private int precio;
 
-    @Column(name = "fecha", length = 30, nullable = false)
-    private int fecha;
+    @Column(name = "fecha",nullable = true)
+    @JsonSerialize(using = ToStringSerializer.class)
+    private LocalDate fecha;
 
     @Column(name = "descripcion", length = 250, nullable = false)
     private String descripcion;
 
-    @Column(name = "fechainicio", length = 30, nullable = false)
-    private String fechainicio;
+    @Column(name = "fechainicio",nullable = true)
+    @JsonSerialize(using = ToStringSerializer.class)
+    private LocalDate fechainicio;
 
-    @Column(name = "fechafin", length = 30, nullable = false)
-    private String fechafin;
+    @Column(name = "fechafin",nullable = true)
+    @JsonSerialize(using = ToStringSerializer.class)
+    private LocalDate fechafin;
 
     @Column(name = "nombrehijo", length = 30, nullable = false)
     private String nombrehijo;
@@ -35,15 +42,20 @@ public class Solicitud {
     private String direccioncasa;
 
     @Column(name = "direccioncolegio", length = 100, nullable = false)
-    private String dirrecioncolegio;
+    private String direccioncolegio;
 
     @Column(name ="estado", length = 10, nullable = false)
     private String estado;
 
-    public Solicitud() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "idConductor", nullable = false)
+    private Conductor conductor;
 
-    public Solicitud(int idSolicitud, int precio, int fecha, String descripcion, String fechainicio, String fechafin, String nombrehijo, int edadhijo, String direccioncasa, String dirrecioncolegio, String estado) {
+    @ManyToOne
+    @JoinColumn(name = "idPadrefamilia", nullable = false)
+    private Padredefamilia padredefamilia;
+
+    public Solicitud(int idSolicitud, int precio, LocalDate fecha, String descripcion, LocalDate fechainicio, LocalDate fechafin, String nombrehijo, int edadhijo, String direccioncasa, String direccioncolegio, String estado, Conductor conductor, Padredefamilia padredefamilia) {
         this.idSolicitud = idSolicitud;
         this.precio = precio;
         this.fecha = fecha;
@@ -53,8 +65,14 @@ public class Solicitud {
         this.nombrehijo = nombrehijo;
         this.edadhijo = edadhijo;
         this.direccioncasa = direccioncasa;
-        this.dirrecioncolegio = dirrecioncolegio;
+        this.direccioncolegio = direccioncolegio;
         this.estado = estado;
+        this.conductor = conductor;
+        this.padredefamilia = padredefamilia;
+    }
+
+    public Solicitud() {
+        super();
     }
 
     public int getIdSolicitud() {
@@ -73,11 +91,11 @@ public class Solicitud {
         this.precio = precio;
     }
 
-    public int getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(int fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -89,19 +107,19 @@ public class Solicitud {
         this.descripcion = descripcion;
     }
 
-    public String getFechainicio() {
+    public LocalDate getFechainicio() {
         return fechainicio;
     }
 
-    public void setFechainicio(String fechainicio) {
+    public void setFechainicio(LocalDate fechainicio) {
         this.fechainicio = fechainicio;
     }
 
-    public String getFechafin() {
+    public LocalDate getFechafin() {
         return fechafin;
     }
 
-    public void setFechafin(String fechafin) {
+    public void setFechafin(LocalDate fechafin) {
         this.fechafin = fechafin;
     }
 
@@ -129,12 +147,12 @@ public class Solicitud {
         this.direccioncasa = direccioncasa;
     }
 
-    public String getDirrecioncolegio() {
-        return dirrecioncolegio;
+    public String getDireccioncolegio() {
+        return direccioncolegio;
     }
 
-    public void setDirrecioncolegio(String dirrecioncolegio) {
-        this.dirrecioncolegio = dirrecioncolegio;
+    public void setDireccioncolegio(String direccioncolegio) {
+        this.direccioncolegio = direccioncolegio;
     }
 
     public String getEstado() {
@@ -143,5 +161,21 @@ public class Solicitud {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Conductor getConductor() {
+        return conductor;
+    }
+
+    public void setConductor(Conductor conductor) {
+        this.conductor = conductor;
+    }
+
+    public Padredefamilia getPadredefamilia() {
+        return padredefamilia;
+    }
+
+    public void setPadredefamilia(Padredefamilia padredefamilia) {
+        this.padredefamilia = padredefamilia;
     }
 }

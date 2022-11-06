@@ -6,11 +6,11 @@ import pe.edu.upc.tfsafeport.entities.Solicitud;
 import pe.edu.upc.tfsafeport.servicesinterfaces.ISolicitudService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/solicitud")
 public class SolicitudController {
-
     @Autowired
     private ISolicitudService sService;
 
@@ -35,4 +35,10 @@ public class SolicitudController {
         lista=sService.search(solicitud.getNombrehijo());
         return lista;
     }
+
+    @GetMapping("/{id}")
+    public Optional<Solicitud> listarId(@PathVariable("id") Integer id) {
+        return sService.ListarId(id);
+    }
+
 }
