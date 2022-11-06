@@ -39,4 +39,12 @@ public class HistorialviajeServiceImpl implements IHistorialviajeService {
     public List<Historialviaje> search(String observaciones) {
         return hR.search(observaciones);
     }
+
+    @Override
+    public List<Historialviaje> buscarHora(String hora){
+        return hR.buscarHora(hora);
+    }
+
 }
+
+
