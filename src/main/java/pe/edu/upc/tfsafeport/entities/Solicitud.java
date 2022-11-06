@@ -35,15 +35,16 @@ public class Solicitud {
     private String direccioncasa;
 
     @Column(name = "direccioncolegio", length = 100, nullable = false)
-    private String dirrecioncolegio;
+    private String direccioncolegio;
 
     @Column(name ="estado", length = 10, nullable = false)
     private String estado;
 
     public Solicitud() {
+        super();
     }
 
-    public Solicitud(int idSolicitud, int precio, int fecha, String descripcion, String fechainicio, String fechafin, String nombrehijo, int edadhijo, String direccioncasa, String dirrecioncolegio, String estado) {
+    public Solicitud(int idSolicitud, int precio, int fecha, String descripcion, String fechainicio, String fechafin, String nombrehijo, int edadhijo, String direccioncasa, String direccioncolegio, String estado) {
         this.idSolicitud = idSolicitud;
         this.precio = precio;
         this.fecha = fecha;
@@ -53,7 +54,7 @@ public class Solicitud {
         this.nombrehijo = nombrehijo;
         this.edadhijo = edadhijo;
         this.direccioncasa = direccioncasa;
-        this.dirrecioncolegio = dirrecioncolegio;
+        this.direccioncolegio = direccioncolegio;
         this.estado = estado;
     }
 
@@ -129,12 +130,12 @@ public class Solicitud {
         this.direccioncasa = direccioncasa;
     }
 
-    public String getDirrecioncolegio() {
-        return dirrecioncolegio;
+    public String getDireccioncolegio() {
+        return direccioncolegio;
     }
 
-    public void setDirrecioncolegio(String dirrecioncolegio) {
-        this.dirrecioncolegio = dirrecioncolegio;
+    public void setDireccioncolegio(String dirrecioncolegio) {
+        this.direccioncolegio = direccioncolegio;
     }
 
     public String getEstado() {

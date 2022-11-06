@@ -10,7 +10,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/solicitud")
 public class SolicitudController {
-
     @Autowired
     private ISolicitudService sService;
 
