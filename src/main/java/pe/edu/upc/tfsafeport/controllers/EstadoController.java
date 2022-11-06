@@ -6,6 +6,7 @@ import pe.edu.upc.tfsafeport.entities.Estado;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IEstadoService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/estados")
@@ -37,7 +38,17 @@ public class EstadoController {
         List<Estado> lista;
         estado.setDireccionPartida(estado.getDireccionPartida());
         lista=eService.search(estado.getDireccionPartida());
+        if (lista.isEmpty()){
+            lista=eService.buscarViajes(estado.getViaje().getHorainicio());
+            lista=eService.buscarSolicitud(estado.getSolicitud().getDescripcion());
+            lista=eService.buscarUbicacion(estado.getUbicacion().getDistrito());
+        }
         return lista;
+
     }
+     @GetMapping("/{id}")
+    public Optional<Estado> listarId(@PathVariable("id")Integer id){
+        return eService.listarId(id);
+     }
 }
 

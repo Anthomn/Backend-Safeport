@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Estado")
 public class Estado {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEstado;
@@ -18,7 +19,41 @@ public class Estado {
     @Column(name = "comentario", length = 250, nullable = false)
     private String comentario;
 
-    public Estado() {
+    @ManyToOne
+    @JoinColumn(name= "IdViaje",nullable = false)
+    private Viaje viaje;
+    @ManyToOne
+    @JoinColumn(name= "IdSolicitud",nullable = false)
+    private Solicitud solicitud;
+    @ManyToOne
+    @JoinColumn(name= "IdUbicacion",nullable = false)
+    private Ubicacion ubicacion;
+
+    public Ubicacion getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(Ubicacion ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public Solicitud getSolicitud() {
+        return solicitud;
+    }
+
+    public void setSolicitud(Solicitud solicitud) {
+        this.solicitud = solicitud;
+    }
+
+    public Viaje getViaje() {
+        return viaje;
+    }
+
+    public void setViaje(Viaje viaje) {
+        this.viaje = viaje;
+    }
+
+    public Estado() { super();
     }
 
     public Estado(int idEstado, String direccionPartida, String direccionLlegada, int duracion, String comentario) {
