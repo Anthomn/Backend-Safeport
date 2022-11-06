@@ -142,7 +142,6 @@ public class Solicitud {
         return estado;
     }
 
-
     public void setEstado(String estado) {
         this.estado = estado;
     }
