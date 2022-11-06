@@ -6,6 +6,7 @@ import pe.edu.upc.tfsafeport.entities.Historialviaje;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IHistorialviajeService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/historialviaje")
@@ -32,6 +33,12 @@ public class HistorialviajeController {
         historialviaje.setObservaciones(historialviaje.getObservaciones());
         lista=hService.search(historialviaje.getObservaciones());
         return lista;
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Historialviaje> ListarId(@PathVariable("id") Integer id)
+    {
+        return hService.ListarId(id);
     }
 
 }
