@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.text.ParseException;
 import java.util.List;
 @RestController
-@RequestMapping("/conductores")
+@RequestMapping("/conductor")
 public class ConductorController {
 
     @Autowired

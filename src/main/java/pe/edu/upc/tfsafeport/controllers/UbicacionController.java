@@ -7,8 +7,10 @@ import pe.edu.upc.tfsafeport.servicesinterfaces.IUbicacionService;
 
 
 import java.util.List;
+import java.util.Optional;
+
 @RestController
-@RequestMapping("/ubicaciones")
+@RequestMapping("/ubicacion")
 public class UbicacionController {
     @Autowired
     private IUbicacionService uService;
@@ -36,4 +38,7 @@ public class UbicacionController {
         lista=uService.search(propietario.getDistrito());
         return lista;
     }
+
+    @GetMapping("/{id}")
+    public Optional<Ubicacion> listarId(@PathVariable("id") Integer id){return uService.ListarId(id);}
 }

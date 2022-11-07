@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/estados")
+@RequestMapping("/estado")
 public class EstadoController {
     @Autowired
     private IEstadoService eService;

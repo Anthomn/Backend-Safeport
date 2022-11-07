@@ -6,8 +6,10 @@ import pe.edu.upc.tfsafeport.entities.Padredefamilia;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IPadredefamiliaService;
 
 import java.util.List;
+import java.util.Optional;
+
 @RestController
-@RequestMapping("/padresdefamilia")
+@RequestMapping("/padredefamilia")
 public class PadredefamiliaController {
     @Autowired
     private IPadredefamiliaService pService;
@@ -37,4 +39,7 @@ public class PadredefamiliaController {
         lista=pService.search(padredefamilia.getNombre());
         return lista;
     }
+
+    @GetMapping("/{id}")
+    public Optional<Padredefamilia> listarId(@PathVariable("id") Integer id) {return pService.listarId(id);}
 }
