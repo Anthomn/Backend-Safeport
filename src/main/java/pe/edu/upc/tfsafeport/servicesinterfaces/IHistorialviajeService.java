@@ -16,5 +16,8 @@ public interface IHistorialviajeService {
 
     public Optional<Historialviaje>ListarId(int idHistorial);
 
+
     List<Historialviaje>search(String observaciones);
+
+    List<Historialviaje> buscarHora(String hora);
 }

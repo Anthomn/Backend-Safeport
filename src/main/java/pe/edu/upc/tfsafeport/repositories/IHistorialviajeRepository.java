@@ -10,8 +10,11 @@ import java.util.List;
 
 @Repository
 public interface IHistorialviajeRepository extends JpaRepository<Historialviaje, Integer> {
+
+    @Query("from Historialviaje h where h.viaje.horainicio like %:horainicio")
+    List<Historialviaje>buscarHora(@Param("horainicio")String horainicio);
+
     @Query("from Historialviaje h where h.observaciones like %:observaciones")
     List<Historialviaje> search(@Param("observaciones")String observaciones);
     //necesario para el service
-
 }
