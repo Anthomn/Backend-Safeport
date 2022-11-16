@@ -48,8 +48,8 @@ public class ViajeServiceImpl implements IViajeService {
     }
     //prueba de merge
     @Override
-    public List<Viaje> buscarVehiculo(String fecha) {
-        return vj.buscarVehiculo(fecha);
+    public List<Viaje> buscarVehiculo(String placa) {
+        return vj.buscarVehiculo(placa);
     }
     @Override
     public List<Viaje> search(String horainicio) {

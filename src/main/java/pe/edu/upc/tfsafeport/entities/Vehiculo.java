@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Table (name = "Vehiculo")
 public class Vehiculo implements Serializable {
 
-    private static final long serialVersionUID =1L;
+    //private static final long serialVersionUID =1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
@@ -19,8 +19,11 @@ public class Vehiculo implements Serializable {
     private String color;
     @Column(name = "estado", length = 20, nullable = false)
     private String estado;
+    /*
     @Column(name = "marca", length = 20, nullable = false)
     private String marca;
+
+     */
     @Column(name = "caracteristica", length = 255, nullable = false)
     private String caracteristica;
 
@@ -31,34 +34,31 @@ public class Vehiculo implements Serializable {
     @JoinColumn(name = "idConductor", nullable = false)
     private Conductor conductor;
 
+    @ManyToOne
+    @JoinColumn(name= "idMarca", nullable = false)
+    private Marca marca;
+
     public Vehiculo (){
         super();
     }
-    public Vehiculo(int id, String placa, String color, String estado, String marca, String caracteristica, Conductor conductor) {
+
+    public Vehiculo(int id, String placa, String color, String estado, String caracteristica, String aniomodelo, Conductor conductor, Marca marca) {
         Id = id;
         this.placa = placa;
         this.color = color;
         this.estado = estado;
-        this.marca = marca;
         this.caracteristica = caracteristica;
-        this.aniomodelo= aniomodelo;
+        this.aniomodelo = aniomodelo;
         this.conductor = conductor;
-    }
-
-    public String getCaracteristica() {
-        return caracteristica;
-    }
-
-    public void setCaracteristica(String caracteristica) {
-        this.caracteristica = caracteristica;
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
     }
 
     public String getPlaca() {
@@ -69,14 +69,6 @@ public class Vehiculo implements Serializable {
         this.placa = placa;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public String getColor() {
         return color;
     }
@@ -85,20 +77,20 @@ public class Vehiculo implements Serializable {
         this.color = color;
     }
 
-
-
-    public Conductor getConductor() {
-        return conductor;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setConductor(Conductor conductor) {
-        this.conductor = conductor;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
-    public int getId() {
-        return Id;
+
+    public String getCaracteristica() {
+        return caracteristica;
     }
-    public void setId(int id) {
-        Id = id;
+
+    public void setCaracteristica(String caracteristica) {
+        this.caracteristica = caracteristica;
     }
 
     public String getAniomodelo() {
@@ -107,5 +99,21 @@ public class Vehiculo implements Serializable {
 
     public void setAniomodelo(String aniomodelo) {
         this.aniomodelo = aniomodelo;
+    }
+
+    public Conductor getConductor() {
+        return conductor;
+    }
+
+    public void setConductor(Conductor conductor) {
+        this.conductor = conductor;
+    }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
     }
 }

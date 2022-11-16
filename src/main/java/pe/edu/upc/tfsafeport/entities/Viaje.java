@@ -1,7 +1,11 @@
 package pe.edu.upc.tfsafeport.entities;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name ="Viaje")
@@ -13,7 +17,8 @@ public class Viaje {
     private int idViaje;
 
     @Column(name = "fecha", length = 30, nullable = false)
-    private int fecha;
+    @JsonSerialize(using = ToStringSerializer.class)
+    private LocalDate fecha;
 
     @Column(name = "horarinicio", length = 30, nullable = false)
     private String horainicio;
@@ -34,13 +39,15 @@ public class Viaje {
     }
 
     public Viaje() {
+        super();
     }
 
-    public Viaje(int idViaje, int fecha, String horainicio, String horafin) {
+    public Viaje(int idViaje, LocalDate fecha, String horainicio, String horafin, Vehiculo vehiculo) {
         this.idViaje = idViaje;
         this.fecha = fecha;
         this.horainicio = horainicio;
         this.horafin = horafin;
+        this.vehiculo = vehiculo;
     }
 
     public int getIdViaje() {
@@ -51,11 +58,11 @@ public class Viaje {
         this.idViaje = idViaje;
     }
 
-    public int getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(int fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 

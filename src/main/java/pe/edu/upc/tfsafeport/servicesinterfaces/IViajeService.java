@@ -16,7 +16,7 @@ public interface IViajeService {
 
     public Optional<Viaje>listarId(int idViaje);
 
-    List<Viaje> buscarVehiculo(String fecha);
+    List<Viaje> buscarVehiculo(String placa);
     List<Viaje> search(String horainicio);
 
 }

@@ -14,4 +14,6 @@ public interface IVehiculoService {
 
     List<Vehiculo>search(String placa);
     List<Vehiculo>searchConductor(String nombre);
+
+    List<Vehiculo>searchMarca(String nombremarca);
 }

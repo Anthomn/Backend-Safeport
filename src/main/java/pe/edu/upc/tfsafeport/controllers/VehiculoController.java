@@ -37,6 +37,7 @@ public class VehiculoController {
         listaVehiculo=vService.search(vehiculo.getPlaca());
         if (listaVehiculo.isEmpty()){
             listaVehiculo = vService.searchConductor(vehiculo.getConductor().getNombre());
+            listaVehiculo = vService.searchMarca(vehiculo.getMarca().getNombremarca());
         }
         return listaVehiculo;
     }

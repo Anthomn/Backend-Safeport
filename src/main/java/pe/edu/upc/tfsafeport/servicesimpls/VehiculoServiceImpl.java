@@ -2,6 +2,7 @@ package pe.edu.upc.tfsafeport.servicesimpls;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.tfsafeport.entities.Solicitud;
 import pe.edu.upc.tfsafeport.entities.Vehiculo;
 import pe.edu.upc.tfsafeport.repositories.IVehiculoRepository;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IVehiculoService;
@@ -34,8 +35,8 @@ import java.util.Optional;
         }
         @Override
         public Optional<Vehiculo> ListarId(int id) {
-
-            return uR.findById(id);
+            return Optional.of(uR.findById(id).orElse(new Vehiculo()));
+            //return uR.findById(id);
 
         }
 
@@ -51,6 +52,11 @@ import java.util.Optional;
         @Override
         public List<Vehiculo> searchConductor(String nombre) {
             return uR.searchConductor(nombre);
+        }
+
+        @Override
+        public List<Vehiculo> searchMarca(String nombremarca) {
+            return uR.searchMarca(nombremarca);
         }
     }
 

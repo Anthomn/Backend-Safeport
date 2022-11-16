@@ -15,4 +15,7 @@ public interface IVehiculoRepository extends JpaRepository<Vehiculo,Integer> {
 
     @Query("from Vehiculo p where p.conductor.nombre like %:nombre%")
     List<Vehiculo> searchConductor(@Param("nombre") String nombre);
+
+    @Query("from Vehiculo p where p.marca.nombremarca like %:nombremarca%")
+    List<Vehiculo> searchMarca(@Param("nombremarca") String nombremarca);
 }
