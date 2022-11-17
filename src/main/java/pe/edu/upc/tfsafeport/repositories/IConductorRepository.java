@@ -15,4 +15,10 @@ public interface IConductorRepository extends JpaRepository<Conductor, Integer> 
     List<Conductor> search(@Param("nombre")String nombre);
 
     List<Conductor> findByNombre(String valor);
+
+    @Query (value = "select * from conductor c where c.verificado = 'S' order by c.nombre asc",nativeQuery = true)
+    List<Conductor>buscarverificado();
+
+    @Query(value = "select * from conductor c where c.tiempoconduccion >= 5 order by c.tiempoconduccion desc",nativeQuery = true)
+    List<Conductor>buscartiempo();
 }

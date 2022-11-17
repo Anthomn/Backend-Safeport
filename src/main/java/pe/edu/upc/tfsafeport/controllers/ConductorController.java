@@ -51,4 +51,14 @@ public class ConductorController {
 
     @PostMapping("/buscarnombre")
     public List<Conductor> buscarnombre(@RequestBody String nombre) {return  cService.buscarnombre(nombre);}
+
+    @GetMapping("/buscarverificado")
+    public List<Conductor>buscarverificado(){
+        return cService.buscarverificado();
+    }
+
+    @GetMapping("/buscartiempo")
+    public List<Conductor>buscartiempo(){
+        return cService.buscartiempo();
+    }
 }

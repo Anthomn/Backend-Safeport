@@ -17,4 +17,7 @@ public interface IConductorService {
 
     List<Conductor> buscarnombre(String nombre);
 
+    List<Conductor>buscarverificado();
+
+    List<Conductor>buscartiempo();
 }
