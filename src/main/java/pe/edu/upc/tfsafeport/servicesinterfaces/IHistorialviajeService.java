@@ -20,4 +20,6 @@ public interface IHistorialviajeService {
     List<Historialviaje>search(String observaciones);
 
     List<Historialviaje> buscarHora(String hora);
+
+    List<Historialviaje> buscarPlaca(String placa);
 }

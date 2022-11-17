@@ -58,5 +58,10 @@ import java.util.Optional;
         public List<Vehiculo> searchMarca(String nombremarca) {
             return uR.searchMarca(nombremarca);
         }
+
+        @Override
+        public List<Vehiculo> buscarPlaca(String placa) {
+            return uR.findByPlaca(placa);
+        }
     }
 

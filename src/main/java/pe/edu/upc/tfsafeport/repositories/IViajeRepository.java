@@ -18,4 +18,6 @@ public interface IViajeRepository extends JpaRepository<Viaje, Integer> {
 
     @Query("from Viaje p where p.horainicio like %:horainicio")
     List<Viaje> search(@Param("horainicio")String horainicio);
+
+    List<Viaje> findByVehiculoPlaca(String valor);
 }

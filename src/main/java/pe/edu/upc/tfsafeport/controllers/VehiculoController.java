@@ -2,6 +2,7 @@ package pe.edu.upc.tfsafeport.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfsafeport.entities.Conductor;
 import pe.edu.upc.tfsafeport.entities.Vehiculo;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IVehiculoService;
 
@@ -55,5 +56,7 @@ public class VehiculoController {
         lista=vService.search(vehiculo.getPlaca());
         return lista;
     }*/
+    @PostMapping("/buscarplaca")
+    public List<Vehiculo> buscarPlaca(@RequestBody String placa) {return  vService.buscarPlaca(placa);}
 }
 

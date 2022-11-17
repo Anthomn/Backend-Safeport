@@ -14,5 +14,6 @@ public interface IPadredefamiliaService {
 
     List<Padredefamilia> search(String nombre);
 
+    List<Padredefamilia> buscarnombre(String nombre);
 
 }

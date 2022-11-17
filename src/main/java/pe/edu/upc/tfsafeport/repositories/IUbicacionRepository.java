@@ -12,4 +12,6 @@ import java.util.List;
 public interface IUbicacionRepository extends JpaRepository<Ubicacion,Integer> {
     @Query("from Ubicacion p where p.distrito like %:distrito")
     List<Ubicacion> search(@Param("distrito")String distrito);
+
+    List<Ubicacion> findByDistrito(String valor);
 }

@@ -2,6 +2,7 @@ package pe.edu.upc.tfsafeport.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfsafeport.entities.Conductor;
 import pe.edu.upc.tfsafeport.entities.Padredefamilia;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IPadredefamiliaService;
 
@@ -42,4 +43,7 @@ public class PadredefamiliaController {
 
     @GetMapping("/{id}")
     public Optional<Padredefamilia> listarId(@PathVariable("id") Integer id) {return pService.listarId(id);}
+
+    @PostMapping("/buscarnombre")
+    public List<Padredefamilia> buscarnombre(@RequestBody String nombre) {return  pService.buscarnombre(nombre);}
 }

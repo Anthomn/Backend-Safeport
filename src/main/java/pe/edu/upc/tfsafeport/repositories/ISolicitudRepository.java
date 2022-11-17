@@ -12,4 +12,6 @@ import java.util.List;
 public interface ISolicitudRepository extends JpaRepository<Solicitud, Integer> {
     @Query("from Solicitud s where s.nombrehijo like %:nombrehijo")
     List<Solicitud> search(@Param("nombrehijo")String nombrehijo);
+
+    List<Solicitud> findByNombrehijo(String valor);
 }

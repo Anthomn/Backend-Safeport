@@ -45,6 +45,11 @@ public class HistorialviajeServiceImpl implements IHistorialviajeService {
         return hR.buscarHora(hora);
     }
 
+    @Override
+    public List<Historialviaje> buscarPlaca(String placa) {
+        return hR.findByViajeVehiculoPlaca(placa);
+    }
+
 }
 
 

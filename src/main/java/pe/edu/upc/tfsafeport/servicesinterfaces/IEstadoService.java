@@ -15,4 +15,6 @@ public interface IEstadoService {
     List<Estado> buscarViajes(String horainicio);
     List<Estado> buscarSolicitud(String descripcion);
     List<Estado> buscarUbicacion(String nombre);
+
+    List<Estado> buscarDistrito(String nombre);
 }

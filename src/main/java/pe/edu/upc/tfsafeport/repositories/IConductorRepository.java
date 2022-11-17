@@ -14,4 +14,5 @@ public interface IConductorRepository extends JpaRepository<Conductor, Integer> 
     @Query("from Conductor p where p.nombre like %:nombre")
     List<Conductor> search(@Param("nombre")String nombre);
 
+    List<Conductor> findByNombre(String valor);
 }

@@ -22,4 +22,5 @@ public interface IEstadoRepository extends JpaRepository<Estado,Integer> {
     @Query("from Estado e where e.ubicacion.distrito like %:distrito")
     List<Estado>buscarUbicacion(@Param("distrito")String distrito);
 
+    List<Estado> findByUbicacionDistrito(String valor);
 }

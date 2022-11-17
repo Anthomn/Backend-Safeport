@@ -2,6 +2,7 @@ package pe.edu.upc.tfsafeport.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfsafeport.entities.Conductor;
 import pe.edu.upc.tfsafeport.entities.Estado;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IEstadoService;
 
@@ -50,5 +51,8 @@ public class EstadoController {
     public Optional<Estado> listarId(@PathVariable("id")Integer id){
         return eService.listarId(id);
      }
+
+    @PostMapping("/buscardistrito")
+    public List<Estado> buscarDistrito(@RequestBody String nombre) {return eService.buscarDistrito(nombre);}
 }
 

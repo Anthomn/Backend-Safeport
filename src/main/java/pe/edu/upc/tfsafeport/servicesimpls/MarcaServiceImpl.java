@@ -40,4 +40,10 @@ public class MarcaServiceImpl implements IMarcaService {
     public List<Marca> search(String nombremarca) {
         return mR.search(nombremarca);
     }
+
+    @Override
+    public List<Marca> buscarMarca(String marca) {
+        return mR.findBynombremarca(marca);
+    }
+
 }

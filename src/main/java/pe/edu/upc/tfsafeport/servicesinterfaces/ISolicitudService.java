@@ -16,4 +16,6 @@ public interface ISolicitudService {
     public Optional<Solicitud>ListarId(int idSolicitud);
 
     List<Solicitud>search(String nombrehijo);
+
+    List<Solicitud> buscarnombrehijo(String nombre);
 }

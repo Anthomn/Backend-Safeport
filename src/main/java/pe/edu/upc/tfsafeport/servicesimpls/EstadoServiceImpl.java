@@ -64,4 +64,9 @@ public class EstadoServiceImpl implements IEstadoService {
         return eR.buscarUbicacion(distrito);
     }
 
+    @Override
+    public List<Estado> buscarDistrito(String nombre) {
+        return eR.findByUbicacionDistrito(nombre);
+    }
+
 }

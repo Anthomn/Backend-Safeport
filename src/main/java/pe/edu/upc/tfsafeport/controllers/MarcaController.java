@@ -39,4 +39,9 @@ public class MarcaController {
 
     @GetMapping("/{id}")
     public Optional<Marca> listarId(@PathVariable("id") Integer id){return mService.listarId(id);}
+
+    @PostMapping("/buscarmarca")
+    public List<Marca> buscarMarca(@RequestBody String marca) {
+        return mService.buscarMarca(marca);
+    }
 }

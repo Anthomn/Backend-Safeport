@@ -14,4 +14,7 @@ public interface IConductorService {
     public void delete(int idConductor);
     public Optional<Conductor> listarId(int idConductor);
     List<Conductor>search(String nombre);
+
+    List<Conductor> buscarnombre(String nombre);
+
 }

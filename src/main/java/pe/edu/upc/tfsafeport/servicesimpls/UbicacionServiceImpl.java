@@ -36,4 +36,9 @@ public class UbicacionServiceImpl implements IUbicacionService {
     public List<Ubicacion> search(String nameUbicacion) {
         return uR.search(nameUbicacion);
     }
+
+    @Override
+    public List<Ubicacion> buscardistrito(String distrito) {
+        return uR.findByDistrito(distrito);
+    }
 }

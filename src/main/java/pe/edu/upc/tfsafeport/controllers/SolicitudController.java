@@ -2,6 +2,7 @@ package pe.edu.upc.tfsafeport.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfsafeport.entities.Conductor;
 import pe.edu.upc.tfsafeport.entities.Solicitud;
 import pe.edu.upc.tfsafeport.servicesinterfaces.ISolicitudService;
 
@@ -41,4 +42,6 @@ public class SolicitudController {
         return sService.ListarId(id);
     }
 
+    @PostMapping("/buscarnombrehijo")
+    public List<Solicitud> buscarnombrehijo(@RequestBody String nombre) {return  sService.buscarnombrehijo(nombre);}
 }

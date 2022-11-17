@@ -2,6 +2,7 @@ package pe.edu.upc.tfsafeport.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfsafeport.entities.Estado;
 import pe.edu.upc.tfsafeport.entities.Historialviaje;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IHistorialviajeService;
 
@@ -41,4 +42,6 @@ public class HistorialviajeController {
         return hService.ListarId(id);
     }
 
+    @PostMapping("/buscarhistorial")
+    public List<Historialviaje> buscarPlaca(@RequestBody String nombre) {return hService.buscarPlaca(nombre);}
 }

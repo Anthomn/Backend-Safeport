@@ -40,4 +40,9 @@ public class PadredefamiliaServiceImpl implements IPadredefamiliaService {
         return pR.search(nombre);
     }
 
+    @Override
+    public List<Padredefamilia> buscarnombre(String nombre) {
+        return pR.findByNombre(nombre);
+    }
+
 }

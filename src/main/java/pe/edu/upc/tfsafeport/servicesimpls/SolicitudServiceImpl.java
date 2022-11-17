@@ -31,4 +31,9 @@ public class SolicitudServiceImpl implements ISolicitudService {
 
     @Override
     public List<Solicitud> search(String nombrehijo) {return sc.search(nombrehijo);}
+
+    @Override
+    public List<Solicitud> buscarnombrehijo(String nombre) {
+        return sc.findByNombrehijo(nombre);
+    }
 }

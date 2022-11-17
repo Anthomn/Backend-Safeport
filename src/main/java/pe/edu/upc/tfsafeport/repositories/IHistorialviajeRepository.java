@@ -17,4 +17,6 @@ public interface IHistorialviajeRepository extends JpaRepository<Historialviaje,
     @Query("from Historialviaje h where h.observaciones like %:observaciones")
     List<Historialviaje> search(@Param("observaciones")String observaciones);
     //necesario para el service
+
+    List<Historialviaje> findByViajeVehiculoPlaca(String valor);
 }

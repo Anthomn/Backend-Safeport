@@ -55,4 +55,9 @@ public class ViajeServiceImpl implements IViajeService {
     public List<Viaje> search(String horainicio) {
         return vj.search(horainicio);
     }
+
+    @Override
+    public List<Viaje> buscarfecha(String fecha) {
+        return vj.findByVehiculoPlaca(fecha);
+    }
 }

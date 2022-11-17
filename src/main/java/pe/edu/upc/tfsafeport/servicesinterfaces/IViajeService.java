@@ -19,4 +19,6 @@ public interface IViajeService {
     List<Viaje> buscarVehiculo(String placa);
     List<Viaje> search(String horainicio);
 
+    List<Viaje> buscarfecha(String fecha);
+
 }

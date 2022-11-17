@@ -48,4 +48,7 @@ public class ConductorController {
     public Optional<Conductor> listarId(@PathVariable("id") Integer id){
         return  cService.listarId(id);
     }
+
+    @PostMapping("/buscarnombre")
+    public List<Conductor> buscarnombre(@RequestBody String nombre) {return  cService.buscarnombre(nombre);}
 }

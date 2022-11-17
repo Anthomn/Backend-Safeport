@@ -16,4 +16,6 @@ public interface IMarcaService {
     public Optional<Marca> listarId(int idMarca);
 
     List<Marca>search(String nombremarca);
+
+    List<Marca>buscarMarca(String marca);
 }

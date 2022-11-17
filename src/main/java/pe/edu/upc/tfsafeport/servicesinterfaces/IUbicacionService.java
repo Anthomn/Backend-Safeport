@@ -13,4 +13,6 @@ public interface IUbicacionService {
     public void delete(int id);
 
     List<Ubicacion>search(String distrito);
+
+    List<Ubicacion> buscardistrito(String distrito);
 }
