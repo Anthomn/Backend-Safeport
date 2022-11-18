@@ -1,5 +1,6 @@
 package pe.edu.upc.tfsafeport.repositories;
 
+import org.hibernate.mapping.Value;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,4 +21,10 @@ public interface IViajeRepository extends JpaRepository<Viaje, Integer> {
     List<Viaje> search(@Param("horainicio")String horainicio);
 
     List<Viaje> findByVehiculoPlaca(String valor);
+
+    @Query(value ="SELECT * FROM viaje v WHERE v.fecha >= '2022-01-01'", nativeQuery = true)
+    List<Viaje>buscarFechaMayor();
+
+    @Query(value = "SELECT v.placa, count (v.placa)as cantidadviajes FROM vehiculo v INNER join viaje ON viaje.id_vehiculo = v.id group by v.placa ",nativeQuery = true)
+    List<String[]>cantidadViajes();
 }

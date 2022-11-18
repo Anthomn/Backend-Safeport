@@ -1,5 +1,6 @@
 package pe.edu.upc.tfsafeport.servicesinterfaces;
 
+import pe.edu.upc.tfsafeport.entities.Respuesta;
 import pe.edu.upc.tfsafeport.entities.Viaje;
 
 import java.util.Date;
@@ -20,5 +21,9 @@ public interface IViajeService {
     List<Viaje> search(String horainicio);
 
     List<Viaje> buscarfecha(String fecha);
+
+    List<Viaje> buscarFechaMayor();
+
+    List<Respuesta> buscarCantidadViajes();
 
 }
