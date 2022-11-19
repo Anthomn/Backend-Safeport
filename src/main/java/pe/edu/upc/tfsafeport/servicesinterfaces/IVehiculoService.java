@@ -1,5 +1,6 @@
 package pe.edu.upc.tfsafeport.servicesinterfaces;
 
+import pe.edu.upc.tfsafeport.entities.CantidadVehiculoRespuesta;
 import pe.edu.upc.tfsafeport.entities.Vehiculo;
 
 import java.util.List;
@@ -18,4 +19,9 @@ public interface IVehiculoService {
     List<Vehiculo>searchMarca(String nombremarca);
 
     List<Vehiculo> buscarPlaca(String placa);
+
+    List<Vehiculo> searchEstado();
+
+    List<CantidadVehiculoRespuesta> searchCantidad();
+
 }

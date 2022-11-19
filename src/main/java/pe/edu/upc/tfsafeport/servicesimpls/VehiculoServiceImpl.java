@@ -2,6 +2,7 @@ package pe.edu.upc.tfsafeport.servicesimpls;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.tfsafeport.entities.CantidadVehiculoRespuesta;
 import pe.edu.upc.tfsafeport.entities.Solicitud;
 import pe.edu.upc.tfsafeport.entities.Vehiculo;
 import pe.edu.upc.tfsafeport.repositories.IVehiculoRepository;
@@ -9,6 +10,7 @@ import pe.edu.upc.tfsafeport.servicesinterfaces.IVehiculoService;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,5 +65,26 @@ import java.util.Optional;
         public List<Vehiculo> buscarPlaca(String placa) {
             return uR.findByPlaca(placa);
         }
+
+        @Override
+        public List<Vehiculo> searchEstado() {
+            return uR.searchEstado();
+        }
+
+        @Override
+        public List<CantidadVehiculoRespuesta> searchCantidad() {
+            List<CantidadVehiculoRespuesta>lista=new ArrayList<>();
+            uR.searchCantidad().forEach(
+
+                    y->{CantidadVehiculoRespuesta r = new CantidadVehiculoRespuesta();
+                        r.setMarca(y[0]);
+                        r.setCantidad(y[1]);
+                        lista.add(r);
+
+                    });
+            return lista;
+        }
+
+
     }
 
