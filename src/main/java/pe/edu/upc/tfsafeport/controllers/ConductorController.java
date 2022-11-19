@@ -58,9 +58,9 @@ public class ConductorController {
     }
 
     @GetMapping("/buscartiempo")
-    public List<Conductor>buscartiempo(){
+    public List<Conductor>buscartiempo() {
         return cService.buscartiempo();
-
+    }
     @GetMapping("/cantidad")
     public List<CantidadVehiculoXConductor> searchCantidad(){
         return cService.searchCantidad();

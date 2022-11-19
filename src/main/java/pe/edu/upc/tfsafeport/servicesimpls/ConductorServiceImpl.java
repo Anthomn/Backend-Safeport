@@ -52,7 +52,7 @@ public class ConductorServiceImpl implements IConductorService {
     @Override
     public List<Conductor> buscartiempo() {
         return cR.buscartiempo();
-
+    }
     @Override
     public List<CantidadVehiculoXConductor> searchCantidad()
     {

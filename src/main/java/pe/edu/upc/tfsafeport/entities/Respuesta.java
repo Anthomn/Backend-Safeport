@@ -2,29 +2,23 @@ package pe.edu.upc.tfsafeport.entities;
 
 public class Respuesta {
 
-
-
-    public String getVehiculo() {
-        return vehiculo;
-    }
-
-    public void setVehiculo(String vehiculo) {
-        this.vehiculo = vehiculo;
-    }
-
-    public String getCantidadviajes() {
-        return cantidadviajes;
-    }
-
-    public void setCantidadviajes(String cantidadviajes) {
-        this.cantidadviajes = cantidadviajes;
-
     private String id;
     private String conductor;
     private String cantidad;
     private String ingresoMensual;
     private String vehiculo;
     private String cantidadviajes;
+    public Respuesta() {
+    }
+
+    public Respuesta(String id, String conductor, String cantidad, String ingresoMensual, String vehiculo, String cantidadviajes) {
+        this.id = id;
+        this.conductor = conductor;
+        this.cantidad = cantidad;
+        this.ingresoMensual = ingresoMensual;
+        this.vehiculo = vehiculo;
+        this.cantidadviajes = cantidadviajes;
+    }
 
     public String getId() {
         return id;
@@ -57,16 +51,22 @@ public class Respuesta {
     public void setIngresoMensual(String ingresoMensual) {
         this.ingresoMensual = ingresoMensual;
     }
+    public String getVehiculo() {
+        return vehiculo;
+    }
 
-    public Respuesta(String id, String conductor, String cantidad, String ingresoMensual,String vehiculo, String cantidadviajes ) {
-        this.id = id;
-        this.conductor = conductor;
-        this.cantidad = cantidad;
-        this.ingresoMensual = ingresoMensual;
+    public void setVehiculo(String vehiculo) {
         this.vehiculo = vehiculo;
+    }
+
+    public String getCantidadviajes() {
+        return cantidadviajes;
+    }
+
+    public void setCantidadviajes(String cantidadviajes) {
         this.cantidadviajes = cantidadviajes;
     }
 
-    public Respuesta() {
-    }
+
+
 }

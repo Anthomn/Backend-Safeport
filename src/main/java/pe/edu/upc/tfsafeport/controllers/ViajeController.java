@@ -62,7 +62,7 @@ public class ViajeController {
     @GetMapping("/buscarcantidadviajes")
     public List<Respuesta> buscarCantidadViajes(){return vService.buscarCantidadViajes();}
 
-    @GetMapping("/cantidad")
+    @GetMapping("/cantidadvxf")
     public List<CantidadViajesXFecha> searchCantidad(){
         return vService.searchCantidad();
     }
