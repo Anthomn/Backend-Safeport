@@ -21,4 +21,10 @@ public interface IVehiculoRepository extends JpaRepository<Vehiculo,Integer> {
     List<Vehiculo> searchMarca(@Param("nombremarca") String nombremarca);
 
     List<Vehiculo> findByPlaca(String valor);
+
+
+    @Query(value ="select * from vehiculo where estado like 'nuevo'",nativeQuery = true)
+    List<Vehiculo> searchEstado();
+    @Query(value = "select m.nombremarca ,count(v.id) as cantidad from vehiculo v inner join marca m on v.id_marca = m.id_marca group by m.nombremarca",nativeQuery = true)
+    List<String[]> searchCantidad();
 }

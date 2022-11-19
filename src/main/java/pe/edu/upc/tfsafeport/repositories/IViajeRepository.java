@@ -22,9 +22,14 @@ public interface IViajeRepository extends JpaRepository<Viaje, Integer> {
 
     List<Viaje> findByVehiculoPlaca(String valor);
 
+
     @Query(value ="SELECT * FROM viaje v WHERE v.fecha >= '2022-01-01'", nativeQuery = true)
     List<Viaje>buscarFechaMayor();
 
     @Query(value = "SELECT v.placa, count (v.placa)as cantidadviajes FROM vehiculo v INNER join viaje ON viaje.id_vehiculo = v.id group by v.placa ",nativeQuery = true)
     List<String[]>cantidadViajes();
+
+    @Query(value = "select fecha,count(viaje.id_viaje) as cantidad from viaje group by fecha order by  cantidad desc",nativeQuery = true)
+    List<String[]> searchCantidad();
+
 }

@@ -3,7 +3,11 @@ package pe.edu.upc.tfsafeport.servicesimpls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import pe.edu.upc.tfsafeport.entities.Respuesta;
+
+import pe.edu.upc.tfsafeport.entities.CantidadViajesXFecha;
+
 import pe.edu.upc.tfsafeport.entities.Viaje;
 import pe.edu.upc.tfsafeport.repositories.IViajeRepository;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IViajeService;
@@ -81,4 +85,19 @@ public class ViajeServiceImpl implements IViajeService {
     }
 
 
+
+    @Override
+    public List<CantidadViajesXFecha> searchCantidad()
+    {
+        List<CantidadViajesXFecha>lista=new ArrayList<>();
+        vj.searchCantidad().forEach(
+
+                y->{CantidadViajesXFecha r = new CantidadViajesXFecha();
+                    r.setFecha(y[0]);
+                    r.setCantidad(y[1]);
+                    lista.add(r);
+
+                });
+        return lista;
+    }
 }

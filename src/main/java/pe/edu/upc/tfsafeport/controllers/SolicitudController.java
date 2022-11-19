@@ -3,6 +3,7 @@ package pe.edu.upc.tfsafeport.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfsafeport.entities.Conductor;
+import pe.edu.upc.tfsafeport.entities.Respuesta;
 import pe.edu.upc.tfsafeport.entities.Solicitud;
 import pe.edu.upc.tfsafeport.servicesinterfaces.ISolicitudService;
 
@@ -44,4 +45,14 @@ public class SolicitudController {
 
     @PostMapping("/buscarnombrehijo")
     public List<Solicitud> buscarnombrehijo(@RequestBody String nombre) {return  sService.buscarnombrehijo(nombre);}
+
+    @GetMapping("/reportesolicitud")
+    public  List<Respuesta> buscarSolicitudConductor(){
+        return sService.buscarSolicitudConductor();
+    }
+
+    @GetMapping("/reporteingresos")
+    public  List<Respuesta> buscarSolicitudIngreso(){
+        return sService.buscarSolicitudIngreso();
+    }
 }

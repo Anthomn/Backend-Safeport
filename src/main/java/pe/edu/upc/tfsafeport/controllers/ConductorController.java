@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfsafeport.entities.Conductor;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IConductorService;
-
+import pe.edu.upc.tfsafeport.entities.CantidadVehiculoXConductor;
 import java.util.Optional;
 import java.text.ParseException;
 import java.util.List;
@@ -51,4 +51,19 @@ public class ConductorController {
 
     @PostMapping("/buscarnombre")
     public List<Conductor> buscarnombre(@RequestBody String nombre) {return  cService.buscarnombre(nombre);}
+
+    @GetMapping("/buscarverificado")
+    public List<Conductor>buscarverificado(){
+        return cService.buscarverificado();
+    }
+
+    @GetMapping("/buscartiempo")
+    public List<Conductor>buscartiempo(){
+        return cService.buscartiempo();
+
+    @GetMapping("/cantidad")
+    public List<CantidadVehiculoXConductor> searchCantidad(){
+        return cService.searchCantidad();
+
+    }
 }
