@@ -1,5 +1,6 @@
 package pe.edu.upc.tfsafeport.servicesinterfaces;
 
+import pe.edu.upc.tfsafeport.entities.CantidadVehiculoXConductor;
 import pe.edu.upc.tfsafeport.entities.Conductor;
 import pe.edu.upc.tfsafeport.entities.Ubicacion;
 
@@ -16,5 +17,7 @@ public interface IConductorService {
     List<Conductor>search(String nombre);
 
     List<Conductor> buscarnombre(String nombre);
+
+    List<CantidadVehiculoXConductor> searchCantidad();
 
 }
