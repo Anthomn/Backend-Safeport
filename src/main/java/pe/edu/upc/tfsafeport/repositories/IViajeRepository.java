@@ -20,4 +20,7 @@ public interface IViajeRepository extends JpaRepository<Viaje, Integer> {
     List<Viaje> search(@Param("horainicio")String horainicio);
 
     List<Viaje> findByVehiculoPlaca(String valor);
+
+    @Query(value = "select fecha,count(viaje.id_viaje) as cantidad from viaje group by fecha order by  cantidad desc",nativeQuery = true)
+    List<String[]> searchCantidad();
 }

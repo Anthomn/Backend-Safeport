@@ -2,11 +2,10 @@ package pe.edu.upc.tfsafeport.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.tfsafeport.entities.Conductor;
 import pe.edu.upc.tfsafeport.entities.Viaje;
 import pe.edu.upc.tfsafeport.servicesinterfaces.IViajeService;
+import pe.edu.upc.tfsafeport.entities.CantidadViajesXFecha;
 
-import java.text.ParseException;
 import java.util.Optional;
 import java.util.List;
 
@@ -51,4 +50,9 @@ public class ViajeController {
 
     @PostMapping("/buscarfecha")
     public List<Viaje> buscarfecha(@RequestBody String nombre) {return vService.buscarfecha(nombre);}
+
+    @GetMapping("/cantidad")
+    public List<CantidadViajesXFecha> searchCantidad(){
+        return vService.searchCantidad();
+    }
 }
