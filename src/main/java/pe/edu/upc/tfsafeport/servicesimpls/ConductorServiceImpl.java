@@ -42,6 +42,17 @@ public class ConductorServiceImpl implements IConductorService {
     public List<Conductor> buscarnombre(String nombre) {
         return cR.findByNombre(nombre);
     }
+
+
+    @Override
+    public List<Conductor> buscarverificado() {
+        return cR.buscarverificado();
+    }
+
+    @Override
+    public List<Conductor> buscartiempo() {
+        return cR.buscartiempo();
+
     @Override
     public List<CantidadVehiculoXConductor> searchCantidad()
     {
@@ -57,5 +68,6 @@ public class ConductorServiceImpl implements IConductorService {
 
                 });
         return lista;
+
     }
 }
