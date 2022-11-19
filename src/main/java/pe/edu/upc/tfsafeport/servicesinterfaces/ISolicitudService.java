@@ -1,5 +1,6 @@
 package pe.edu.upc.tfsafeport.servicesinterfaces;
 
+import pe.edu.upc.tfsafeport.entities.Respuesta;
 import pe.edu.upc.tfsafeport.entities.Solicitud;
 
 import java.util.List;
@@ -18,4 +19,8 @@ public interface ISolicitudService {
     List<Solicitud>search(String nombrehijo);
 
     List<Solicitud> buscarnombrehijo(String nombre);
+
+    List<Respuesta> buscarSolicitudConductor();
+
+    List<Respuesta> buscarSolicitudIngreso();
 }
